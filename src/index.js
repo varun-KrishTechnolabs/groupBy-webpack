@@ -15,4 +15,5 @@ content.innerHTML = `<input type="text" name="search" id="inputField" class="gb_
 `;
 
 root.appendChild(content);
+console.log("hello babes 1223");
 secondChild();
