@@ -1,0 +1,127 @@
+/* ------seachbar css---------- */
+
+ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#root {
+  text-align: center;
+}
+
+.gb_searchcontainer {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin: auto;
+}
+
+.gb_searchbar {
+  width: 100%;
+  border-color: #c4c4c4;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 37px;
+  line-height: 37px;
+  box-shadow: none;
+  display: inline-block;
+  position: static;
+  margin: 0;
+  font: 18px Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.gb_searchbtn {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  border-radius: 0 3px 3px 0;
+  top: 0;
+  z-index: 1;
+  opacity: 1;
+  width: 103px;
+  height: 100%;
+  border: 1px solid #c4c4c4;
+  border-left: none;
+  cursor: pointer;
+  background-color: #ffba00;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#ketpl_autocomplete-popup {
+  display: block;
+  position: absolute;
+  top: 48px;
+  background: white;
+  width: 850px;
+  right: 0;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e6e5e3;
+}
+
+.ktpl_suggestionscontainer {
+  width: 100%;
+  max-width: 150px;
+  background-color: #e6e5e3;
+}
+
+.ktpl_leftpanel {
+}
+
+.ktpl_rightpanel {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ktpl_searchcard {
+  width: calc((100% - 8%) / 3);
+  margin-left: 2%;
+  margin-bottom: 20px;
+}
+
+.ktpl_searchcard:nth-child(3n + 1) {
+  margin-left: 0%;
+}
+
+.ktpl_leftlist {
+  padding: 15px;
+  text-align: left;
+  display: block;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: black;
+}
+
+.ktpl_leftlist a {
+  /* padding: 10px 20px; */
+}
+
+.ktpl_leftlist:hover {
+  background-color: white;
+  color: red;
+}
+
+.ktpl_right-product-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+.ktpl_right-product-image img {
+  width: 120px;
+  /* max-width: 100%; */
+}
