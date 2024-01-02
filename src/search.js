@@ -47,7 +47,7 @@ export function secondChild() {
 
       container.innerHTML = "";
 
-      suggestions.innerHTML = renderLeftPanel(suggestedCategories); // function used to render the HTML
+      suggestions.innerHTML = renderLeftPanel(suggestedCategories, searchTerm); // function used to render the HTML
       suggestedProducts.innerHTML = renderRightPanel(autoCompleteData); // function used to render the HTML
 
       container.appendChild(suggestions);
