@@ -1,4 +1,8 @@
-/* ------seachbar css---------- */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
 
 ul {
   margin: 0;
@@ -11,6 +15,7 @@ a {
   color: black;
 }
 
+/* ------seachbar css---------- */
 #root {
   text-align: center;
 }
@@ -77,9 +82,53 @@ a {
 .ktpl_leftpanel {
 }
 
+.ktpl_searchRight {
+  display: flex;
+  align-items: baseline;
+  padding: 20px;
+}
+
+.ktpl_searchCategory {
+  padding-right: 20px;
+  text-align: left;
+}
+
+.ktpl_category-list-item {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.ktpl_popUp-title {
+  text-align: left;
+}
+
+.ktpl_category-list-item:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.ktpl_serach-suggestion-title {
+  font-size: 18px;
+}
+.ktpl_category-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.ktpl_item-name {
+  font-size: 12px;
+  text-align: left;
+}
+
+.ktpl_item-price {
+  font-size: 12px;
+  text-align: left;
+  color: #731d2a;
+  font-weight: bold;
+}
+
 .ktpl_rightpanel {
   width: 100%;
-  padding: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

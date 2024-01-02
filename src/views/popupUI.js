@@ -12,16 +12,30 @@ export const renderLeftPanel = (data) => {
 };
 
 export const renderRightPanel = (data) => {
-  const rightSide = data[0]?.results?.map((item) => {
-    return `<div class="ktpl_searchcard">
-        <div class="ktpl_right-product-image">
-          <img src=${item?.imageUrl} alt=${item?.name} />
-        </div>
-        <div>
-        <p>${item?.name}</p>
-        <span>${item?.price}</span>
-        </div>
-      </div>`;
+  console.log(data);
+
+  const category = data[0]?.facets.map((item) => {
+    return `<li class="ktpl_category-list-item">${item?.label}</li>`;
   });
-  return `<div class="ktpl_rightpanel">${rightSide?.join("")}</div>`; // UI is retuned
+  const rightSide = data[0]?.results?.map((item) => {
+    return `
+  <div class="ktpl_searchcard">
+    <div class="ktpl_right-product-image">
+      <img src=${item?.imageUrl} alt=${item?.name} />
+    </div>
+    <div>
+      <p class="ktpl_item-name">${item?.name}</p>
+      <span class="ktpl_item-price">$${item?.price}</span>
+    </div>
+  </div>
+    `;
+  });
+  return `<div class="ktpl_searchRight">
+  <div class='ktpl_searchCategory'>
+  <ul>${category?.join("")}</ul></div>
+  <div  class="ktpl_popUp-title">
+  <strong class="ktpl_serach-suggestion-title">Product Suggestions</strong>
+  <div class="ktpl_rightpanel">
+  ${rightSide?.join("")}</div><div>
+  </div>`; // UI is retuned
 };

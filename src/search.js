@@ -11,16 +11,22 @@ import { loader } from "./constants/loader.js";
 export function secondChild() {
   const gb_searchcontainer = document.getElementById("gb_searchcontainer");
 
-  const container = createElement("div");
-  container.id = "ketpl_autocomplete-popup";
+  const container = createElement({
+    elementType: "div",
+    id: "ketpl_autocomplete-popup",
+  });
+  // container.id = "ketpl_autocomplete-popup";
   container.style.display = "none";
 
   // function to listen to the change event of the search bar
   const onChange = async (e) => {
     const searchTerm = e.target.value;
 
-    const suggestions = createElement("div");
-    const suggestedProducts = createElement("div");
+    const suggestions = createElement({
+      elementType: "div",
+      className: "ktpl_suggestionscontainer",
+    });
+    const suggestedProducts = createElement({ elementType: "div" });
 
     // To get and show fresh results everytime the change event is triggred
     container.innerText = "";
@@ -37,7 +43,7 @@ export function secondChild() {
       const suggestedCategories = await fetchSuggestions({ searchTerm });
       const autoCompleteData = await fetchSuggestedProducts({ searchTerm });
 
-      suggestions.className = "ktpl_suggestionscontainer";
+      // suggestions.className = "ktpl_suggestionscontainer";
 
       container.innerHTML = "";
 
