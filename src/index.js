@@ -3,7 +3,7 @@ import { secondChild } from "./search.js";
 
 import "./styles/index.css";
 
-const root = document.getElementById("root");
+const root = document.getElementById("gb_mini-search-block");
 const content = createElement({
   elementType: "div",
   id: "gb_searchcontainer",
