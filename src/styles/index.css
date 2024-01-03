@@ -65,6 +65,7 @@ a {
 }
 
 #ketpl_autocomplete-popup {
+  z-index: 999999;
   display: block;
   position: absolute;
   top: 48px;
