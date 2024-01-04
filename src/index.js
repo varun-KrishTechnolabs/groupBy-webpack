@@ -1,18 +1,10 @@
-import { createElement } from "./helpers/createElement.js";
-import { secondChild } from "./search.js";
+/**@jsx myDom **/
+import myDom from "./myDom.js";
+
+import SearchBar from "./views/SearchBar.js";
 
 import "./styles/index.css";
 
-const root = document.getElementById("gb_mini-search-block");
-const content = createElement({
-  elementType: "div",
-  id: "gb_searchcontainer",
-  className: "gb_searchcontainer",
-});
+const root = document.getElementById("gb-minisearch-container");
 
-content.innerHTML = `<input type="text" name="search" id="inputField" class="gb_searchbar"/>
-<button type="button" class="gb_searchbtn">search</button>
-`;
-
-root.appendChild(content);
-secondChild();
+root.appendChild(<div id="gb_mini-search-block">{SearchBar()}</div>);
