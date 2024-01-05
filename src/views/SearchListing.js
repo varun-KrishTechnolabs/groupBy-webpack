@@ -13,24 +13,27 @@ export const SearchListing = async () => {
   root.innerText = "";
 
   const url = new URL(window.location.href);
+  const path = url.pathname;
   const query = url.searchParams.get("q");
 
-  root.style.display = "block";
-  root.appendChild(loader());
-  try {
-    const data = await fetchSearchPageData();
+  if (path === "/search" && query) {
+    root.style.display = "block";
+    root.appendChild(loader());
+    try {
+      const data = await fetchSearchPageData();
 
     const ui = RenderSearchUI({ data, query });
 
-    root.innerText = "";
+      root.innerText = "";
 
-    root.appendChild(ui);
-  } catch (error) {
-    console.log(
-      "🚀 ~ file: searchListing.js:25 ~ showSearchListing ~ error:",
-      error
-    );
-    return error;
+      root.appendChild(ui);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: searchListing.js:25 ~ showSearchListing ~ error:",
+        error
+      );
+      return error;
+    }
   }
 };
 
