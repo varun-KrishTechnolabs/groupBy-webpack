@@ -43,7 +43,7 @@ export const renderLeftPanel = (data, searchTerm) => {
               onClick={() => showSearchListing({ searchTerm: item.text })}
             >
               <span
-                href={url + `/search?q=` + item.text}
+                // href={url + `/search?q=` + item.text}
                 className="ktpl_leftlist-link "
               >
                 {item.text}
@@ -65,7 +65,9 @@ export const renderRightPanel = (data, searchTerm) => {
             {data[0]?.facets.map((item) => {
               return (
                 <li class="ktpl_category-list-item">
-                  <span>{item?.label}</span>
+                  <span className="ktpl_category-list-label">
+                    {item?.label}
+                  </span>
                 </li>
               );
             })}
@@ -100,7 +102,9 @@ export const renderRightPanel = (data, searchTerm) => {
               className="ktpl_search-popup-footer"
               id="minisearch-all-results"
             >
-              <button>See {data[0]?.results.length} results</button>
+              <button className="ktpl_seeall">
+                See {data[0]?.results.length} results
+              </button>
             </div>
           </div>
         </div>
