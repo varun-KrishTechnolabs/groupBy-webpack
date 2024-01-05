@@ -8,6 +8,8 @@ import { loader } from "../constants/loader.js";
 const root = document.getElementById("gb_search-listing");
 
 export const SearchListing = async () => {
+  root.innerText = "";
+
   const url = new URL(window.location.href);
   const query = url.searchParams.get("q");
 
