@@ -218,19 +218,21 @@ select:not([disabled]):focus {
 }
 
 .ktpl_cardname {
-  min-height: 36px;
+  margin-top: 10px;
+  height: 36px;
+  overflow: hidden;
   font-size: 12px;
   color: #52504f;
 }
 
 .ktpl_cardprice {
-  font-size: 36px;
-  color: #d01c1c;
-  text-align: center;
+  font-size: 25px;
+  color: #731d2a;
+  text-align: left;
 }
 
 .ktpl_cardbtn {
-  width: 160px;
+  /* width: 160px; */
   box-shadow: 0px 0px 4px #bababa;
   padding: 0 15px;
   display: inline-block;
@@ -238,7 +240,7 @@ select:not([disabled]):focus {
   border: 1px solid #fbd70d;
   font-size: 16px;
   color: #000;
-  text-transform: none;
+  text-transform: capitalize;
   margin: 10px 0 0;
   font-weight: 700;
   line-height: 30px;

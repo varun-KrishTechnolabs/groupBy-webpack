@@ -42,7 +42,7 @@ export const SearchListing = async () => {
 };
 
 export const RenderSearchUI = ({ data, query }) => {
-  const searchPageBreadcrumbs = data?.breadcrumbs[0]?.filterValue;
+  const searchPageBreadcrumbs = data?.query;
   // console.log(filterid, "filterid");
 
   const toggleFilter = (index) => {
@@ -50,19 +50,19 @@ export const RenderSearchUI = ({ data, query }) => {
     demo.classList.toggle("myStyle");
   };
 
-  const searchFilter = data?.facets.map((item, index) => {
-    if (item?.values.length > 0) {
-      return (
-        <li onClick={() => toggleFilter(index)}>
-          <p className="ktpl_searc-filter-items">{item.label}</p>
-          <span id={`filterlist-${index}`} className="ktpl_filter_subcategory">
-            hii
-          </span>
-        </li>
-      );
-    } else {
-      return null;
-    }
+  const searchFilter = data?.facets?.map((item, index) => {
+    // if (item?.values.length > 0) {
+    //   return (
+    //     <li onClick={() => toggleFilter(index)}>
+    //       <p className="ktpl_searc-filter-items">{item.label}</p>
+    //       <span id={`filterlist-${index}`} className="ktpl_filter_subcategory">
+    //         hii
+    //       </span>
+    //     </li>
+    //   );
+    // } else {
+    //   return null;
+    // }
   });
 
   // const handleClick = (item) => {
@@ -103,11 +103,11 @@ export const RenderSearchUI = ({ data, query }) => {
               <p class="ktpl toolbar-amount" id="toolbar-amount">
                 Items{" "}
                 <span class="ktpl toolbar-number ng-binding">
-                  {data?.pagination?.begin} - {data?.pagination?.end}
+                  {data?.pageInfo?.recordStart} - {data?.pageInfo?.recordEnd}
                 </span>
                 <span class="ktpl toolbar-number ng-binding">
                   {" "}
-                  of {data?.pagination?.totalResults}
+                  of {data?.totalRecordCount}
                 </span>
               </p>
               <div class="ktpl modes">
@@ -185,31 +185,35 @@ export const RenderSearchUI = ({ data, query }) => {
           </div>
           <div className="ktpl_search-list-card">
             <div className="ktpl_search-list-cardList">
-              {data?.results.map((item) => {
+              {data?.records.map((item) => {
                 // Set the HTML content of the textarea to the encoded name
                 const decodedName = (() => {
                   const textarea = document.createElement("textarea");
-                  textarea.innerHTML = item?.name || "";
+                  textarea.innerHTML = item?._t || "";
                   return textarea.value;
                 })();
                 return (
                   <div className="ktpl_search-list-card-items">
-                    <a href="#">
+                    <a href={item?.allMeta?.uri}>
                       <div className="ktpl_card-image-wrapper">
                         <img
-                          src={item?.imageUrl}
+                          src={item?.allMeta?.images[0]?.uri}
                           alt={item?.name}
                           className="ktpl_card-images "
                         />
                       </div>
-                      <div className="ktpl_card-info">
-                        <span className="ktpl_cardname">{decodedName}</span>
-                        <strong className="ktpl_cardprice">
-                          ${item?.price}
-                        </strong>
-                        <button className="ktpl_cardbtn">Add to cart</button>
-                      </div>
                     </a>
+                    <div className="ktpl_card-info">
+                      <a href={item?.allMeta?.uri} className="ktpl_cardname">
+                        {decodedName}
+                      </a>
+                      <strong className="ktpl_cardprice">
+                        {item?.allMeta?.priceInfo?.abc
+                          ? item?.allMeta?.priceInfo
+                          : "$100"}
+                      </strong>
+                      <button className="ktpl_cardbtn">Add to cart</button>
+                    </div>
                   </div>
                 );
               })}
