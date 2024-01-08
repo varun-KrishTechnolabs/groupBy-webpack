@@ -5,6 +5,8 @@ import { fetchSearchPageData } from "../services/fetchSearchPageData.js";
 
 import { loader } from "../constants/loader.js";
 
+import svg from "../assets/test.svg";
+
 import "../styles/searchlisting.css";
 
 const root = document.getElementById("gb_search-listing");
@@ -123,7 +125,9 @@ export const RenderSearchUI = ({ data, query }) => {
                   ng-click="swapLayout('list')"
                   ss-ps=""
                 >
-                  <span>List</span>
+                  <span>
+                    <img src={svg} />
+                  </span>
                 </a>
                 <strong
                   ng-if="layout == 'grid'"

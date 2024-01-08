@@ -11,6 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js", // the [name].js takes the name specified in the entry object's key , the [contenthash] is included to give the bundle file a unique hash name an and it will generate a unique hash every time a change is made in the referenced file
     clean: true, // clears the old files whenever you run a new build command
+    assetModuleFilename: "assets/[name][ext]",
   },
   // optimization: {
   //   runtimeChunk: "single",
@@ -42,6 +43,10 @@ module.exports = {
             presets: ["@babel/preset-env"],
           },
         },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg)/i,
+        type: "asset/resource",
       },
     ],
   },
