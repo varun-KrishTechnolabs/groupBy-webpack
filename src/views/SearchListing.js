@@ -20,7 +20,11 @@ export const SearchListing = async () => {
     root.style.display = "block";
     root.appendChild(loader());
     try {
-      const data = await fetchSearchPageData();
+      const data = await fetchSearchPageData({ query });
+      console.log(
+        "🚀 ~ file: SearchListing.js:24 ~ SearchListing ~ data:",
+        data
+      );
 
       const ui = RenderSearchUI({ data, query });
 
