@@ -22,7 +22,7 @@ export const SearchListing = async () => {
     try {
       const data = await fetchSearchPageData();
 
-    const ui = RenderSearchUI({ data, query });
+      const ui = RenderSearchUI({ data, query });
 
       root.innerText = "";
 
@@ -43,6 +43,10 @@ export const RenderSearchUI = ({ data, query }) => {
   const searchFilter = data?.facets.map((item) => {
     return <li className="ktpl_searc-filter-items">{item.label}</li>;
   });
+
+  // const handleClick = (item) => {
+  //   console.log(item, "item");
+  // };
 
   return (
     <div className="gb_searchPageListing" id="gb_searchPageListing">
@@ -145,10 +149,11 @@ export const RenderSearchUI = ({ data, query }) => {
                   ng-model="sorting.current"
                   ng-options="option.label for option in sorting.options"
                   class="ktpl ss-menu-select sorter-options ng-pristine ng-valid"
+                  // onClick={(e) => handleClick(e.target.value)}
                 >
-                  {data?.sorting?.options.map((item, index) => {
+                  {data?.sorting?.options.map((item) => {
                     return (
-                      <option value={index} label={item?.label}>
+                      <option value={item?.label} label={item?.label}>
                         {item?.label}
                       </option>
                     );
