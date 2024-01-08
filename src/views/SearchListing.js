@@ -39,9 +39,26 @@ export const SearchListing = async () => {
 
 export const RenderSearchUI = ({ data, query }) => {
   const searchPageBreadcrumbs = data?.breadcrumbs[0]?.filterValue;
+  // console.log(filterid, "filterid");
 
-  const searchFilter = data?.facets.map((item) => {
-    return <li className="ktpl_searc-filter-items">{item.label}</li>;
+  const toggleFilter = (index) => {
+    let demo = document.getElementById(`filterlist-${index}`);
+    demo.classList.toggle("myStyle");
+  };
+
+  const searchFilter = data?.facets.map((item, index) => {
+    if (item?.values.length > 0) {
+      return (
+        <li onClick={() => toggleFilter(index)}>
+          <p className="ktpl_searc-filter-items">{item.label}</p>
+          <span id={`filterlist-${index}`} className="ktpl_filter_subcategory">
+            hii
+          </span>
+        </li>
+      );
+    } else {
+      return null;
+    }
   });
 
   // const handleClick = (item) => {
@@ -173,18 +190,22 @@ export const RenderSearchUI = ({ data, query }) => {
                 })();
                 return (
                   <div className="ktpl_search-list-card-items">
-                    <div className="ktpl_card-image-wrapper">
-                      <img
-                        src={item?.imageUrl}
-                        alt={item?.name}
-                        className="ktpl_card-images "
-                      />
-                    </div>
-                    <div className="ktpl_card-info">
-                      <span className="ktpl_cardname">{decodedName}</span>
-                      <strong className="ktpl_cardprice">${item?.price}</strong>
-                      <button className="ktpl_cardbtn">Add to cart</button>
-                    </div>
+                    <a href="#">
+                      <div className="ktpl_card-image-wrapper">
+                        <img
+                          src={item?.imageUrl}
+                          alt={item?.name}
+                          className="ktpl_card-images "
+                        />
+                      </div>
+                      <div className="ktpl_card-info">
+                        <span className="ktpl_cardname">{decodedName}</span>
+                        <strong className="ktpl_cardprice">
+                          ${item?.price}
+                        </strong>
+                        <button className="ktpl_cardbtn">Add to cart</button>
+                      </div>
+                    </a>
                   </div>
                 );
               })}

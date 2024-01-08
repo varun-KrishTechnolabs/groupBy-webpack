@@ -245,3 +245,16 @@ select:not([disabled]):focus {
   background: linear-gradient(to bottom, #fbd400 0%, #ffb500 100%);
   cursor: pointer;
 }
+
+.ktpl_cardbtn:hover {
+  opacity: 0.8;
+}
+
+.ktpl_filter_subcategory {
+  display: none;
+}
+
+.myStyle {
+  /* background-color: red; */
+  display: flex;
+}
