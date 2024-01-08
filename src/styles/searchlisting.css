@@ -118,7 +118,8 @@ select:not([disabled]):focus {
 }
 
 .modes {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   float: left;
   margin: 4px 10.5%;
 }
@@ -259,4 +260,16 @@ select:not([disabled]):focus {
 .myStyle {
   /* background-color: red; */
   display: flex;
+}
+
+.ktpl_listview,
+.ktpl_gridview {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.ktpl_listview {
+  fill: gray;
 }

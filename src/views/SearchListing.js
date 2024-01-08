@@ -5,7 +5,8 @@ import { fetchSearchPageData } from "../services/fetchSearchPageData.js";
 
 import { loader } from "../constants/loader.js";
 
-import svg from "../assets/test.svg";
+import grid from "../assets/grid.svg";
+import list from "../assets/list.svg";
 
 import "../styles/searchlisting.css";
 
@@ -50,6 +51,15 @@ export const RenderSearchUI = ({ data, query }) => {
   const toggleFilter = (index) => {
     let demo = document.getElementById(`filterlist-${index}`);
     demo.classList.toggle("myStyle");
+  };
+
+  const toggleView = (viewtype) => {
+    let view = document.getElementById("ktpl_card-list");
+    if (viewtype === "list") {
+      view.classList.remove("ktpl_search-list-cardList");
+    } else {
+      view.classList.add("ktpl_search-list-cardList");
+    }
   };
 
   const searchFilter = data?.facets?.map((item, index) => {
@@ -116,26 +126,18 @@ export const RenderSearchUI = ({ data, query }) => {
                 <strong class="ktpl modes-label" id="modes-label">
                   Display Type
                 </strong>
-                <a
-                  style="cursor: pointer;"
-                  class="ktpl modes-mode mode-list ng-scope"
-                  title="List"
-                  id="mode-list"
-                  ng-if="layout == 'grid'"
-                  ng-click="swapLayout('list')"
-                  ss-ps=""
+                <button
+                  className="ktpl_listview"
+                  onClick={() => toggleView("list")}
                 >
-                  <span>
-                    <img src={svg} />
-                  </span>
-                </a>
-                <strong
-                  ng-if="layout == 'grid'"
-                  title="Grid"
-                  class="ktpl modes-mode active mode-grid ng-scope"
+                  <img src={list} className="ktpl_listicon" />
+                </button>
+                <button
+                  className="ktpl_gridview"
+                  onClick={() => toggleView("grid")}
                 >
-                  <span>Grid</span>
-                </strong>
+                  <img src={grid} className="ktpl_gridicon" />
+                </button>
               </div>
               <div class="ktpl ss-toolbar-col ss-per-page-container field limiter">
                 <label class="ktpl ss-menu-label label">
@@ -188,7 +190,7 @@ export const RenderSearchUI = ({ data, query }) => {
             </div>
           </div>
           <div className="ktpl_search-list-card">
-            <div className="ktpl_search-list-cardList">
+            <div className="ktpl_search-list-cardList" id="ktpl_card-list">
               {data?.records.map((item) => {
                 // Set the HTML content of the textarea to the encoded name
                 const decodedName = (() => {
