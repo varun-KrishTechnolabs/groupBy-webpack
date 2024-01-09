@@ -16,10 +16,9 @@ export const SearchListing = async () => {
   root.innerText = "";
 
   const url = new URL(window.location.href);
-  const path = url.pathname;
   const query = url.searchParams.get("q");
 
-  if (path === "/search" && query) {
+  if (query) {
     root.style.display = "block";
     root.appendChild(loader());
     try {

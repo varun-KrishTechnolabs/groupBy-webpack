@@ -57,6 +57,11 @@ module.exports = {
       filename: "index.html", // the name by which the final html will be saved in the dist folder
       template: "src/index.html", // if we do no provide this option then a index.html will be created in the dist folder that will refer to the bundle.js file and that it no other changes will be reflected upon the build , so we include this option in order to pass a reference index.html file and then this is builded and added to the dist folder so due to this when we make changes in the our template file those change are considered at the build time and the final index.html in the dist folder is created on the basis of the template
     }),
+    // new HtmlWebpackPlugin({
+    //   title: "search listing page",
+    //   filename: "search.html",
+    //   template: "src/search.html",
+    // }),
   ],
   performance: {
     hints: false,

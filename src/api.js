@@ -1,6 +1,9 @@
 // import dotenv from "dotenv";
 // dotenv.config();
-
+/**
+ * This is the instance of class to make an api call
+ * Here creating an instance was a better option because we need to use the headers everywhere
+ */
 class fetchClass {
   constructor() {
     this.defaultHeaders = new Headers();
@@ -23,4 +26,5 @@ class fetchClass {
   }
 }
 
+// Here this class is initiated and along with that we can access its methods for making the api call
 export const fetchInstance = new fetchClass();

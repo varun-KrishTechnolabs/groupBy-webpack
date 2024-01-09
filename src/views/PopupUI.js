@@ -1,21 +1,25 @@
 /**@jsx myDom **/
 
 import myDom from "../myDom.js";
-import { SearchListing } from "./SearchListing.js";
 
 /**
  * This function changes the url and triggres the function for further UI changes
  * @param {string} searchTerm the query/suggested word on which the user click
  */
 const showSearchListing = async ({ searchTerm }) => {
-  const url = window.location.origin;
-  const newUrl = `${url}/search?q=${searchTerm}`;
-  history.pushState(null, null, newUrl);
+  const currentUrl = new URL(window.location.href);
+
+  // Add or update the query parameter
+  currentUrl.searchParams.set("q", searchTerm);
+
+  history.pushState(null, null, currentUrl.href);
+
+  // In order to indicate the change to the browser we dispatch and event
+  const changeEvent = new Event("hashchange");
+  window.dispatchEvent(changeEvent);
 
   const autoCompletePopup = document.getElementById("ketpl_autocomplete-popup");
   autoCompletePopup.innerText = "";
-
-  SearchListing();
 };
 
 export const renderLeftPanel = (data, searchTerm) => {

@@ -3,8 +3,9 @@ import myDom from "./myDom.js";
 
 import SearchBar from "./views/SearchBar.js";
 
-import "./styles/index.css";
 import { SearchListing } from "./views/SearchListing.js";
+
+import "./styles/index.css";
 
 const root = document.getElementById("gb-minisearch-container");
 
@@ -15,4 +16,7 @@ root.appendChild(<div id="gb_mini-search-block">{SearchBar()}</div>);
  * so when the change is triggred the SearchListing function is triggred
  * if it is search page url then the fucntion renders the UI on the basis of the query param
  */
-window.addEventListener("hashchange", SearchListing());
+window.addEventListener("hashchange", SearchListing);
+
+// Add event listener for page load (refresh)
+window.addEventListener("load", SearchListing);
