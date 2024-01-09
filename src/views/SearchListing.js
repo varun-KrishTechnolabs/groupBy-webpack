@@ -54,10 +54,17 @@ export const RenderSearchUI = ({ data, query }) => {
 
   const toggleView = (viewtype) => {
     let view = document.getElementById("ktpl_card-list");
+    let cardView = document.querySelectorAll("[id='grid-card-view']");
     if (viewtype === "list") {
       view.classList.remove("ktpl_search-list-cardList");
+      for (var i = 0; i < cardView.length; i++) {
+        cardView[i].classList.add("ktpl_search-list-Listcard-items");
+      }
     } else {
       view.classList.add("ktpl_search-list-cardList");
+      for (var i = 0; i < cardView.length; i++) {
+        cardView[i].classList.remove("ktpl_search-list-Listcard-items");
+      }
     }
   };
 
@@ -198,7 +205,10 @@ export const RenderSearchUI = ({ data, query }) => {
                   return textarea.value;
                 })();
                 return (
-                  <div className="ktpl_search-list-card-items">
+                  <div
+                    className="ktpl_search-list-card-items"
+                    id="grid-card-view"
+                  >
                     <a href={item?.allMeta?.uri}>
                       <div className="ktpl_card-image-wrapper">
                         <img
@@ -209,15 +219,19 @@ export const RenderSearchUI = ({ data, query }) => {
                       </div>
                     </a>
                     <div className="ktpl_card-info">
-                      <a href={item?.allMeta?.uri} className="ktpl_cardname">
-                        {decodedName}
-                      </a>
-                      <strong className="ktpl_cardprice">
-                        {item?.allMeta?.priceInfo?.abc
-                          ? item?.allMeta?.priceInfo
-                          : "$100"}
-                      </strong>
-                      <button className="ktpl_cardbtn">Add to cart</button>
+                      <div className="ktpl_cardname-wrapper">
+                        <a href={item?.allMeta?.uri} className="ktpl_cardname">
+                          {decodedName}
+                        </a>
+                      </div>
+                      <div className="ktpl_card-action">
+                        <strong className="ktpl_cardprice">
+                          {item?.allMeta?.priceInfo?.abc
+                            ? item?.allMeta?.priceInfo
+                            : "$100"}
+                        </strong>
+                        <button className="ktpl_cardbtn">Add to cart</button>
+                      </div>
                     </div>
                   </div>
                 );

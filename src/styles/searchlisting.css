@@ -226,6 +226,10 @@ select:not([disabled]):focus {
   color: #52504f;
 }
 
+.ktpl_cardname-wrapper {
+  flex-grow: 1;
+}
+
 .ktpl_cardprice {
   font-size: 25px;
   color: #731d2a;
@@ -270,6 +274,41 @@ select:not([disabled]):focus {
   outline: none;
 }
 
+.ktpl_card-action {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding-left: 20px;
+}
+
 .ktpl_listview {
   fill: gray;
+}
+.ktpl_search-list-Listcard-items {
+  width: 100%;
+  display: flex;
+  margin-left: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #bcbcbc;
+}
+
+/* .ktpl_search-list-Listcard-items:last-child {
+  border-bottom: none;
+} */
+
+.ktpl_search-list-Listcard-items .ktpl_card-image-wrapper {
+  width: 240px;
+  padding-right: 20px;
+}
+
+.ktpl_search-list-Listcard-items .ktpl_card-info {
+  flex-direction: row;
+  width: 100%;
+}
+
+.ktpl_search-list-Listcard-items .ktpl_cardname {
+  color: #303030;
+  font-weight: 700;
+  font-size: 18px;
 }
