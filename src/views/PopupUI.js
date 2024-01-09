@@ -2,6 +2,7 @@
 
 import myDom from "../myDom.js";
 
+import responsiveData from "../helpers/responsiveCard.js";
 /**
  * This function changes the url and triggres the function for further UI changes
  * @param {string} searchTerm the query/suggested word on which the user click
@@ -26,7 +27,7 @@ export const renderLeftPanel = (data, searchTerm) => {
   const url = window.location.origin;
   return (
     <div class="ktpl_leftpanel">
-      <ul>
+      <ul className="ktpl_leftlist-wrapper">
         <li
           className="ktpl_leftlist"
           onClick={() =>
@@ -61,11 +62,35 @@ export const renderLeftPanel = (data, searchTerm) => {
 };
 
 export const renderRightPanel = (data, searchTerm) => {
+  const products = responsiveData(data[0]?.results);
+  console.log(products, "pro");
   return (
     <div>
       <div className="ktpl_searchRight">
         <div className="ktpl_searchCategory">
-          <ul>
+          <ul className="ktpl_searchCategory-list">
+            {data[0]?.facets.map((item) => {
+              return (
+                <li class="ktpl_category-list-item">
+                  <span className="ktpl_category-list-label">
+                    {item?.label}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+          <ul className="ktpl_searchCategory-list">
+            {data[0]?.facets.map((item) => {
+              return (
+                <li class="ktpl_category-list-item">
+                  <span className="ktpl_category-list-label">
+                    {item?.label}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+          <ul className="ktpl_searchCategory-list">
             {data[0]?.facets.map((item) => {
               return (
                 <li class="ktpl_category-list-item">
@@ -82,7 +107,7 @@ export const renderRightPanel = (data, searchTerm) => {
             Product Suggestions
           </strong>
           <div className="ktpl_rightpanel">
-            {data[0]?.results?.map((item) => {
+            {products?.map((item) => {
               const itemName =
                 item?.name.split("(")[0].slice(0, 36) +
                 (item?.name.split("(")[0].length > 16 ? "..." : "");
@@ -94,7 +119,7 @@ export const renderRightPanel = (data, searchTerm) => {
                     </div>
                     <div>
                       <p class="ktpl_item-name">{itemName}</p>
-                      <span class="ktpl_item-price">{item?.price}</span>
+                      <span class="ktpl_item-price">${item?.price}</span>
                     </div>
                   </a>
                 </div>

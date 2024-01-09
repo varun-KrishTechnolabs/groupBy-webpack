@@ -206,14 +206,146 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
+  /* max-width: 100%; */
+  max-width: 120px;
 }
 
 .ktpl_right-product-image img {
-  width: 120px;
-  /* max-width: 100%; */
+  /* width: 120px; */
+  width: 100%;
 }
 
 .ktpl_search-popup-footer {
   text-align: right;
+}
+
+.ktpl_searchCategory-list {
+  margin-bottom: 10px;
+}
+
+.ktpl_searchCategory-list:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 991px) {
+  .ktpl_searchCategory {
+    display: flex;
+    width: 100%;
+    padding-right: 0;
+    justify-content: space-between;
+  }
+
+  .ktpl_searchRight {
+    flex-direction: column;
+  }
+
+  #ketpl_autocomplete-popup {
+    flex-direction: column;
+    width: auto;
+  }
+
+  .ktpl_suggestionscontainer {
+    max-width: 100%;
+  }
+
+  .ktpl_leftlist-wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  .ktpl_leftlist {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ktpl_category-list-item {
+    font-size: 12px;
+    color: #333333;
+  }
+
+  .ktpl_category-list-item:first-child {
+    font-size: 14px;
+  }
+
+  .ktpl_searchcard {
+    width: calc((100% - 4%) / 3);
+    margin-left: 2%;
+    margin-bottom: 20px;
+  }
+
+  .ktpl_right-product-image {
+    max-width: 100px;
+  }
+
+  .ktpl_search-popup-footer {
+    text-align: left;
+  }
+
+  .ktpl_seeall {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #ketpl_autocomplete-popup {
+    flex-direction: column;
+    width: auto;
+  }
+
+  .ktpl_searchCategory {
+    display: none;
+  }
+
+  .ktpl_suggestionscontainer {
+    max-width: 100%;
+  }
+
+  .ktpl_leftlist-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .ktpl_leftlist {
+    width: 50%;
+    text-align: left;
+  }
+
+  .ktpl_leftlist:hover {
+    background-color: transparent;
+  }
+
+  .ktpl_leftlist:first-child .ktpl_leftlist-link {
+    background-color: transparent;
+    color: #c41134;
+  }
+
+  .ktpl_leftlist-link {
+    font-size: 13px;
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
+
+  .ktpl_searchcard {
+    width: calc((100% - 2%) / 2);
+    margin-left: 2%;
+    margin-bottom: 20px;
+  }
+
+  .ktpl_serach-suggestion-title {
+    display: none;
+  }
+
+  .ktpl_right-product-image {
+    max-width: 80px;
+  }
+
+  .ktpl_search-popup-footer {
+    text-align: left;
+  }
+
+  .ktpl_seeall {
+    padding: 0;
+  }
 }
